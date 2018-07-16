@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 
 namespace SkillTreeHw1.Controllers
 {
@@ -12,17 +13,7 @@ namespace SkillTreeHw1.Controllers
     {
         public ActionResult Index()
         {
-            List<SelectListItem> CategoryList = new List<SelectListItem>();
-            foreach (IncomeStatement state in Enum.GetValues(typeof(IncomeStatement)))
-            {
-                CategoryList.Add(new SelectListItem()
-                {
-                    Text = state.ToString(),
-                    Value = state.ToString(),
-                });
-            }
-
-            ViewData["Categories"] = CategoryList;
+            ViewData["Categories"] = EnumHelper.GetSelectList(typeof(IncomeStatement));
 
             return View();
         }
@@ -30,7 +21,7 @@ namespace SkillTreeHw1.Controllers
         [ChildActionOnly]
         public ActionResult MoneyList()
         {
-            List<MoneyViewModel> moneyList = MoneyListFactory.GetMoneyList();
+            var moneyList = MoneyListFactory.GetMoneyList();
             return View(moneyList);
         }
 
