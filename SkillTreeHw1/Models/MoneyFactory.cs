@@ -8,23 +8,21 @@ namespace SkillTreeHw1.Models
 {
     public class MoneyListFactory
     {
-        public static List<MoneyViewModel> GetMoneyList()
+        public static IEnumerable<MoneyViewModel> GetMoneyList()
         {
-            Random gen = new Random((int)DateTime.Now.Ticks);
-            int CgRange = 2;
-            int AmtRange = 10000;
-            int DateRange = 365;
-            List<MoneyViewModel> moneyList = new List<MoneyViewModel>();
+            Random gen       = new Random((int) DateTime.Now.Ticks);
+            int    cgRange   = 2;
+            int    amtRange  = 10000;
+            int    dateRange = 365;
             for (int i = 0; i < 50; i++)
             {
-                moneyList.Add(new MoneyViewModel()
+                yield return new MoneyViewModel()
                 {
-                    Category = gen.Next(CgRange) == 1 ? IncomeStatement.支出 : IncomeStatement.收入,
-                    Amount = gen.Next(AmtRange),
-                    Date = DateTime.Today.AddDays(gen.Next(DateRange))
-                });
+                    Category = gen.Next(cgRange) == 1 ? IncomeStatement.支出 : IncomeStatement.收入,
+                    Amount   = gen.Next(amtRange),
+                    Date     = DateTime.Today.AddDays(gen.Next(dateRange))
+                };
             }
-            return moneyList;
         }
     }
 }
