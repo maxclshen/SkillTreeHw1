@@ -5,18 +5,18 @@ using System.Web;
 
 namespace SkillTreeHw1.Models.ViewModels
 {
-    public class MoneyViewModel
+    public class AccountBookViewModel
     {
-        public IncomeStatement Category { get; set; }
+        public Category Category { get; set; }
         public DateTime Date { get; set; }
         public int Amount { get; set; }
     }
 
-    public enum IncomeStatement
+    public enum Category
     {
 
-        收入,
+        收入 = 0,
 
-        支出,
+        支出 = 1,
     }
 }
