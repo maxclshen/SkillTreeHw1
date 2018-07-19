@@ -157,7 +157,7 @@
     <Compile Include="Models\AccountBookEntities.cs" />
     <Compile Include="Models\CustomValidation.cs" />
     <Compile Include="Models\MoneyFactory.cs" />
-    <Compile Include="Models\ViewModels\AccountBookModel.cs" />
+    <Compile Include="Models\ViewModels\AccountBookViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />

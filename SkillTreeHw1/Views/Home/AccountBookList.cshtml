@@ -5,6 +5,9 @@
     Layout = null;
 }
 
+@helper DisplayColor(Category category) { 
+    <span class="text-@(category == Category.支出? "danger" : "success")">@category</span>
+}
 
 <div class="row">
     <div class="col-md-12">
@@ -22,7 +25,7 @@
                 {
                     <tr>
                         <td></td>
-                        <td>@item.Category</td>
+                        <td>@DisplayColor(item.Category)</td>
                         <td>@item.Date.ToShortDateString()</td>
                         <td>@item.Amount.ToString("#,0")</td>
                     </tr>

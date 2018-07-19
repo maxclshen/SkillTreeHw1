@@ -15,10 +15,15 @@ namespace SkillTreeHw1.Models
                 DateTime inputDate = Convert.ToDateTime(value);
                 if (inputDate > DateTime.Now)
                 {
-                    return new ValidationResult($"輸入日期：{inputDate.ToShortDateString()}不得大於今天");
+                    string errMsg = $"輸入日期：{inputDate.ToShortDateString()}不得大於今天";
+                    return new ValidationResult(errMsg);
                 }
+
+                return ValidationResult.Success;
             }
-            return ValidationResult.Success;
+
+            return new ValidationResult("無輸入值");
+
         }
     }
 }

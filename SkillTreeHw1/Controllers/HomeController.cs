@@ -36,16 +36,18 @@ namespace SkillTreeHw1.Controllers
                 data.Id = Guid.NewGuid(); //正確
                 _accountbookService.Add(data);
                 _unitOfWork.Commit();
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+
+            return View(data);
         }
 
         [ChildActionOnly]
         public ActionResult AccountBookList()
         {
             //List<AccountBookViewModel> moneyList = MoneyListFactory.GetMoneyList();
-            var source = _accountbookService.GetAll().Take(50);
-            return View(source);
+            var accountBookList = _accountbookService.GetAll().Take(50);
+            return View(accountBookList);
         }
 
         public ActionResult About()
