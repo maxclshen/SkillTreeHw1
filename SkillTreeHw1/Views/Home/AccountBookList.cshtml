@@ -1,0 +1,36 @@
+﻿@using SkillTreeHw1.Models.ViewModels
+@model IEnumerable<SkillTreeHw1.Models.ViewModels.AccountBookViewModel>
+
+@{
+    Layout = null;
+}
+
+@helper DisplayColor(Category category) { 
+    <span class="text-@(category == Category.支出? "danger" : "success")">@category</span>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover table-reflow">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>類別</th>
+                    <th>日期</th>
+                    <th>金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <td>@DisplayColor(item.Category)</td>
+                        <td>@item.Date.ToShortDateString()</td>
+                        <td>@item.Amount.ToString("#,0")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
