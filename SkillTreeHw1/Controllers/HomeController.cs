@@ -28,12 +28,13 @@ namespace SkillTreeHw1.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(AccountBook data)
         {
             if (ModelState.IsValid)
             {
                 //data.Id = new Guid(); guid 會是 00000000-0000-0000-0000-000000000000
-                data.Id = Guid.NewGuid(); //正確
+                data.Id = Guid.NewGuid(); //正確 
                 _accountbookService.Add(data);
                 _unitOfWork.Commit();
                 return RedirectToAction("Index");

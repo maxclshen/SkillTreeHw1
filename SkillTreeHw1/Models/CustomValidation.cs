@@ -13,6 +13,7 @@ namespace SkillTreeHw1.Models
             if (value != null)
             {
                 DateTime inputDate = Convert.ToDateTime(value);
+                //if(DateTime.TryParse(value.ToString(), out DateTime inputDate)) 新寫法
                 if (inputDate > DateTime.Now)
                 {
                     string errMsg = $"輸入日期：{inputDate.ToShortDateString()}不得大於今天";
