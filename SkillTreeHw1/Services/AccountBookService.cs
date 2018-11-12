@@ -19,14 +19,14 @@ namespace SkillTreeHw1.Services
 
         public IEnumerable<AccountBookViewModel> GetAll()
         {
-            var source = _accountBookRepo.LookupAll().OrderByDescending(a => a.Dateee);
+            var source = _accountBookRepo.LookupAll();
             var result = source.Select(r => new AccountBookViewModel
             {
                 Category = (Category)r.Categoryyy,
                 Date = r.Dateee,
                 Amount = r.Amounttt
             });
-            return result;
+            return result.OrderByDescending(a => a.Date);
         }
 
         public void Add(AccountBook accountBook)

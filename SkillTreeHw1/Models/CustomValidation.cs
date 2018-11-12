@@ -19,12 +19,9 @@ namespace SkillTreeHw1.Models
                     string errMsg = $"輸入日期：{inputDate.ToShortDateString()}不得大於今天";
                     return new ValidationResult(errMsg);
                 }
-
-                return ValidationResult.Success;
             }
 
-            return new ValidationResult("無輸入值");
-
+            return ValidationResult.Success;
         }
     }
 }
